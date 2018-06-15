@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys
-reload(sys)
+# reload(sys)
 sys.setdefaultencoding('utf-8')
 import csv
 #from data_util import *
@@ -64,7 +64,7 @@ def length_of_sentence(file_path):
     print("mini_length:",mini_length)
     print("max_length:",max_length)
 
-    print sorted(length_dict.items(), key=lambda d: d[0])
+    print(sorted(length_dict.items(), key=lambda d: d[0]))
 
 
 def label_length_of_sentence(file_path):
@@ -115,7 +115,7 @@ def label_length_of_sentence(file_path):
     print("mini_length:",mini_length)
     print("max_length:",max_length)
 
-    print sorted(length_dict.items(), key=lambda d: d[0])
+    print(sorted(length_dict.items(), key=lambda d: d[0]))
 
 def token_string_as_list(string,tokenize_style='word'):
     string=string.decode("utf-8")

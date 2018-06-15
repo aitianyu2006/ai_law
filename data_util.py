@@ -141,7 +141,7 @@ def transform_data_to_index(lines,vocab_word2index,accusation_label2index,articl
                 if i%1000==0: print("####################freq_accusation:",freq_accusation,"freq_article:",freq_article,";num_copy:",num_copy)
             weight_accusation, weight_artilce=get_weight_freq_article(freq_accusation, freq_article)
 
-        for k in range(num_copy):
+        for k in range(int(num_copy)):
             X.append(x)
             Y_accusation.append(y_accusation)
             Y_article.append(y_article)
