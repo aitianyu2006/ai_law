@@ -61,7 +61,7 @@ def load_data_multilabel(traning_data_path,valid_data_path,test_data_path,vocab_
     if not os.path.exists(cache_file):
         with open(cache_file, 'ab') as data_f:
             print("going to dump train/valid/test data to file sytem.")
-            pickle.dump((train,valid,test),data_f)
+            pickle.dump((train,valid,test),data_f, protocol=4)
     return train,valid,test
 
 splitter=':'
