@@ -189,10 +189,14 @@ class HierarchicalAttention:
 
         #1. cnn to reduce length of input: 400--->30
         cnn_result= self.conv_layers_return_3d(sequences_states, 'conv_layer', reuse_flag=False) #[batch_size,sequence_length-filter_size + 1,num_filters]=[batch_size,sequence_length-filter_size + 1,hidden_size]
+        print('cnn_result:',cnn_result)
         # max pooling
         pooling=tf.nn.max_pool(cnn_result, ksize=[1,((self.total_sequence_length-self.filter_sizes[0])/self.stride_length)+1,1,1], strides=[1,1,1,1], padding='VALID',name="pool")#shape:[batch_size, 1, 1, num_filters].max_pool:performs the max pooling on the input.
+        print('pooling size:',pooling)
         #4. classifier
         h=tf.layers.dense(pooling,self.hidden_size*4,activation=tf.nn.tanh,use_bias=True)
+        h = tf.squeeze(tf.reduce_mean(h,2))
+        print('h :',h)
         logits_list = self.project_tasks(h)
         return logits_list
 
