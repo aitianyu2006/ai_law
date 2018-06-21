@@ -263,7 +263,7 @@ def create_or_load_vocabulary(data_path, predict_path, training_data_path, vocab
         for i, line in enumerate(lines):
             if i % 10000 == 0:
                 print(i)
-            json_string = json.loads(line.strip())
+            json_string = json.loads(line.strip().replace("\"", ""))
             facts = json_string['fact']
             input_list = token_string_as_list(facts)
             c_inputs.update(input_list)
