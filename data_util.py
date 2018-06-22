@@ -49,7 +49,7 @@ def load_data_multilabel(traning_data_path, valid_data_path, test_data_path, voc
     train_line = test_data_obejct.readline()
     train_lines = list()
     while train_line:
-        train_lines.append(train_line)
+        train_lines.append(train_line.replace(r"\"", ""))
 
     valid_lines = valid_file_object.readlines()
     test_lines = test_data_obejct.readlines()
@@ -263,7 +263,7 @@ def create_or_load_vocabulary(data_path, predict_path, training_data_path, vocab
         for i, line in enumerate(lines):
             if i % 10000 == 0:
                 print(i)
-            json_string = json.loads(line.strip().replace("\"", ""))
+            json_string = json.loads(line.strip())
             facts = json_string['fact']
             input_list = token_string_as_list(facts)
             c_inputs.update(input_list)
