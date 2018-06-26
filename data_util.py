@@ -49,7 +49,7 @@ def load_data_multilabel(traning_data_path, valid_data_path, test_data_path, voc
     train_line = test_data_obejct.readline()
     train_lines = list()
     while train_line:
-        train_lines.append(train_line)
+        train_lines.append(train_line.replace(r"\"", ""))
 
     valid_lines = valid_file_object.readlines()
     test_lines = test_data_obejct.readlines()
